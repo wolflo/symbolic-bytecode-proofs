@@ -1,0 +1,15 @@
+{
+  "name": "symbolic-code",
+  "version": "0.0.1",
+  "description": "",
+  "main": "compile.js",
+  "scripts": {
+    "compile": "node compile.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bn.js": "^5.1.2"
+  }
+}

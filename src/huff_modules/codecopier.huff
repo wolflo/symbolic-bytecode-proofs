@@ -1,0 +1,30 @@
+// stack: [ top bottom ]
+
+// [] -> []
+template <runtime_len>
+#define macro RUNTIME = takes(0) returns(0) {
+  0x00 <runtime_len> dup1 codesize sub // [ appended_len runtime_len 00 ]
+  dup1 iszero throw_dst jumpi  // if no code is appended, revert
+  dup1 swap2 dup4 // [ 00 runtime_len appended_len appended_len 00 ]
+
+  // codecopy(dstOst, ost, len)
+  codecopy  // [ appended_len 00 ]
+  // return(ost, len)
+  swap1 return
+
+  throw_dst:
+    0x00 dup1 revert
+}
+
+// [] -> []
+template <constructor_len>
+#define macro CONSTRUCTOR = takes(0) returns (0) {
+  0x00 <constructor_len> dup1 codesize sub // [ runtime_len constructor_len 00 ]
+  dup1 swap2 dup4 // [ 00 constructor_len runtime_len runtime_len 00 ]
+
+  // codecopy(dstOst, ost, len)
+  codecopy
+  // return(ost, len)
+  swap1 return
+}
+
