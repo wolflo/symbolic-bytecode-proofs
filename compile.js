@@ -7,7 +7,7 @@ const OUT_PATH = 'out/';
 
 const copierParsed = parser.parseFile('codecopier.huff', modulesPath);
 
-const APPENDED_DATA = 'f0f0f0f0'
+const APPENDED_DATA = ''
 
 const runtimeShallow = parser.processMacro(
   'RUNTIME',
